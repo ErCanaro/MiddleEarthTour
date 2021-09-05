@@ -81,7 +81,7 @@ public class Database {
 
 		ArrayList<Usuario> usuariosDB = new ArrayList<>();
 		Usuario eowyn = new Usuario("Eowyn", TipoAtraccion.AVENTURA, 10.0, 8.0);
-		Usuario gandalf = new Usuario("Gandalf", TipoAtraccion.PAISAJES, 30.0, 30.0);
+		Usuario gandalf = new Usuario("Gandalf", TipoAtraccion.PAISAJES, 100.0, 30.0);
 		Usuario sam = new Usuario("Sam", TipoAtraccion.DEGUSTACION, 36.0, 8);
 		Usuario galadriel = new Usuario("Galadriel", TipoAtraccion.PAISAJES, 10.0, 8.0);
 		Usuario jose = new Usuario("Jose", TipoAtraccion.AVENTURA, 40.0, 10.0);

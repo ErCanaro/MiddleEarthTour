@@ -37,31 +37,32 @@ public class PromocionAxBTest {
 		assertEquals(TipoAtraccion.AVENTURA, promoAxB.getAtraccionesIncluidas().get(2).getTipo());
 	}
 	
+	@Test(expected = Error.class)
+	public void queNoSeCreeUnaPromocionSiAlMenosUnaAtraccionNoCoincideConSuTipo() {
+		Atraccion atracc = new Atraccion("Prueba 1", TipoAtraccion.AVENTURA, 10, 5, 25);
+		Atraccion atracc2 = new Atraccion("Prueba 1", TipoAtraccion.AVENTURA, 12, 2, 15);
+		Atraccion atracc3 = new Atraccion("Prueba 5", TipoAtraccion.DEGUSTACION, 10, 3, 35);
+		
+		PromocionAxB promoAxB =  new PromocionAxB("Promo AxB", TipoAtraccion.AVENTURA, atracc, atracc2, atracc3);
+		assertTrue(promoAxB == null);
+	}
+	
+	
 	@Test
-	public void sobreCupo() {
+	public void queAlcomprarUnaPromocionAxBSeRestaElCupoDeCadaAtraccionIncluida() {
 		Usuario user = new Usuario ("Elewen", TipoAtraccion.AVENTURA, 50, 100);
 		Atraccion atracc = new Atraccion("Prueba 1", TipoAtraccion.AVENTURA, 10, 5, 25);
 		Atraccion atracc2 = new Atraccion("Prueba 1", TipoAtraccion.AVENTURA, 12, 2, 15);
 		Atraccion atracc3 = new Atraccion("Prueba 5", TipoAtraccion.AVENTURA, 10, 3, 35);
 		
 		PromocionAxB promoAxB =  new PromocionAxB("Promo AxB", TipoAtraccion.AVENTURA, atracc, atracc2, atracc3);
-						
-		user.aceptarSugerencia(atracc2);
-		assertEquals(14, atracc2.getCupo());
-		assertEquals(25, atracc.getCupo());
-		assertEquals(35, atracc3.getCupo());
 		
 		user.aceptarSugerencia(promoAxB);
-		assertEquals(13, atracc2.getCupo());
+		assertEquals(14, atracc2.getCupo());
 		assertEquals(24, atracc.getCupo());
 		assertEquals(34, atracc3.getCupo());
 		assertEquals(1, promoAxB.getCupo());
 	}
-	@Test
-	public void queNoSePuedeCrearPromocionConAtraccionesDeTiposDiferentes() {
-		
-		
-		
-	}
+	
 
 }
